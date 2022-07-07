@@ -1,18 +1,16 @@
-from django.http import HttpResponse
-
-from django.template import loader
-
-from miprimerapp.models import Familiares
+from django.shortcuts import render
+from miprimerapp.models import Cafe
 
 
-def mi_template(request, nombre_familiar,edad_familiar):
-    template1 = loader.get_template("prueba.html")
-    # nombre = "jonas"
-    familiares = Familiares(nombre=nombre_familiar, edad=edad_familiar,altura=150)
-    familiares.save()
-    lista_de_familia = Familiares.objects.all()
+def mi_template(request):
+    cafe1 = Cafe(nombre ="Sumatra" )
+    cafe2 = Cafe(nombre ="Etiopia" )
+    cafe3 = Cafe(nombre ="Colombia" )
+    cafe1.save()
+    cafe2.save()
+    cafe3.save()
+    return render(request,"prueba.html", {"lista_de_cafe":[cafe1, cafe2, cafe3]})
+
+def nuevo_index(request):
     
-    render1 = template1.render({"lista_de_familia":lista_de_familia})
-
-    # render1 = template1.render({"nombre":nombre})
-    return HttpResponse(render1)
+    return render (request,"index.html")

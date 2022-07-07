@@ -1,8 +1,10 @@
-from .views import mi_template
+from .views import mi_template,nuevo_index
 from django.urls import path
 
 
 urlpatterns = [
 
-    path('template/<nombre_familiar>/<edad_familiar>', mi_template),
+    path('', nuevo_index,name="index"),
+    path('template/', mi_template, name= "cafeinomanos_only"),
+
 ]
