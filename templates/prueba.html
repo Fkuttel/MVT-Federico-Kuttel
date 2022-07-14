@@ -1,15 +1,23 @@
-{% extends 'index.html' %}
-{% block title %}
-        <title>MTV Federico Kuttel</title>
-{% endblock title %}
 
-{% block mi_h1 %}
-Cafeinomanos only
-{% endblock mi_h1 %}
+{% extends 'index.html' %}
+{% block title %}<title>MTV Federico Kuttel</title>{% endblock title %}
+        
+
+
+{% block mi_h1  %}<h1 class="mb-5">Cafeinomanos Only</h1>{% endblock mi_h1 %}
+
+
 <body>
 <p>
-{%for cafe in lista_de_cafe%}
-{{cafe.nombre}}
-{% endfor %}
+
 <p>
 <body>
+{% block afterheader %} 
+        {%for cafe in lista_de_cafe%}
+        <li>
+                
+        {{cafe.nombre}}
+                
+        <li>
+        {% endfor %}
+{% endblock afterheader  %}

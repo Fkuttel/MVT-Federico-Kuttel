@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% block title %}
+        <title>
+            Creacion
+        </title>
+{% endblock title  %}
+
+{% block mi_h1 %}
+<h1 class="mb-5">Laboratorio de Cafe</h1>
+{% endblock mi_h1 %}
+{% block afterheader %} 
+<form action="" method="get">
+<p>
+    Nombre:
+    <input Nombre type="text" name="nombre">
+</p>
+<p>
+    Tostado:
+    <input Tostado type="text" name="tostado">
+</p>
+<p>
+
+    Cuerpo (intesidad variable del 1 al 5)
+    <input Cuerpo type="number" name="cuerpo">
+</p>
+<button>Crear</button>
+
+</form>
+{% endblock afterheader  %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from miprimerapp.models import Cafe
+from .models import Cafe
 
 
 def mi_template(request):
@@ -14,3 +14,12 @@ def mi_template(request):
 def nuevo_index(request):
     
     return render (request,"index.html")
+
+def crear_cafe(request):
+    nombre = request.GET.get("nombre")
+    tostado = request.GET.get("tostado")
+    #cuerpo = request.GET.get("cuerpo")
+    cafe = Cafe(nombre=nombre, tostado=tostado)
+    #cafe.save()
+ 
+    return render(request,"crearcafes.html",{"cafe":cafe})

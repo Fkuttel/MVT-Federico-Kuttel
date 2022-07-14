@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
     <head>
         {% load static %}
@@ -24,6 +25,7 @@
             <div class="container">
                 <a class="navbar-brand" href={% url 'index' %}>Inicio</a>
                 <a class="navbar-brand" href={% url "cafeinomanos_only" %}>Mi Lista de Cafe</a> 
+                <a class="navbar-brand" href={% url "creacion" %}>Crear Cafe</a> 
             </div>
         </nav>
         <!-- Masthead-->
@@ -44,7 +46,7 @@
         <!-- Icons Grid-->
 
         
-
+        {% block afterheader %}{% endblock afterheader %}
 
 
         <!-- Footer-->
