@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+{% block title %}
+        <title>
+            Lista de Cafes creados
+        </title>
+{% endblock title  %}
+
+{% block mi_h1 %}
+<h1 class="mb-5">Lista de Cafes creados</h1>
+{% endblock mi_h1 %}
+{% block afterheader %} 
+<p>
+    <a href={% url 'creacion' %}>Crear Cafe</a>
+</p>
+<form action={% url 'listado_cafes' %}>
+    {{form}}
+    <button> Buscar </button>
+</form>
+<p>
+    {% if listado_cafes %}
+    <ul>
+        {% for cafe  in listado_cafes  %}
+        <li>
+            {{cafe}}
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    No hay cafes con ese nombre!    
+    {% endif %}
+ 
+</p>
+
+{% endblock afterheader  %}

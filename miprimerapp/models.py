@@ -7,3 +7,7 @@ class Cafe(models.Model):
     tostado=models.CharField(blank=True, max_length=30)
     cuerpo=models.IntegerField(null=True, blank=True)
     
+    def __str__(self):
+        return f"El cafe que buscaste se llama {self.nombre}"
+
+    
