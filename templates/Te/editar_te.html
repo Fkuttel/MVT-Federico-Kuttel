@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% block title %}
+        <title>
+            Edicion
+        </title>
+{% endblock title  %}
+
+{% block mi_h1 %}
+<h1 class="mb-5">Laboratorio de Infusiones</h1>
+{% endblock mi_h1 %}
+{% block afterheader %} 
+<form action="{% url 'editar' te.id %}" method="post">{% csrf_token %}
+    <table>
+{{form.as_table}}
+    </table>
+    <p>
+
+        Aroma (escribe que quieres en tu infusion)
+         <li>citrica</li>
+    
+         <li>floral</li>
+    
+         <li>frutal</li>
+    </p>
+<button>Editar</button>
+
+</form>
+{% endblock afterheader  %}

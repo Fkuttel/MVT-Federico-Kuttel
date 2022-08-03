@@ -22,6 +22,8 @@
         {% for cafe  in listado_cafes  %}
         <li>
             {{cafe}}
+            <a href={% url 'editar' cafe.id %}>editar</a>
+            <a href={% url 'borrar' cafe.id %}>borrar</a>
         </li>
         {% endfor %}
     </ul>

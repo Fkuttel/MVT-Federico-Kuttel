@@ -10,4 +10,3 @@ class Cafe(models.Model):
     def __str__(self):
         return f"El cafe que buscaste se llama {self.nombre}"
 
-    

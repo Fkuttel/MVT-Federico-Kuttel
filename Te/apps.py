@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class CafeConfig(AppConfig):
+class TeConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'cafe'
+    name = 'Te'

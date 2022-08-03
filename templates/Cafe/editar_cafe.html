@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% block title %}
+        <title>
+            Edicion
+        </title>
+{% endblock title  %}
+
+{% block mi_h1 %}
+<h1 class="mb-5">Laboratorio de Cafe</h1>
+{% endblock mi_h1 %}
+{% block afterheader %} 
+<form action="{% url 'editar' cafe.id %}" method="post">{% csrf_token %}
+    <table>
+{{form.as_table}}
+    </table>
+    <p>
+
+        Cuerpo (intesidad variable del 1 al 10)
+         <li>1–4: café de cuerpo ligero con un sabor delicado.</li>
+    
+         <li>5–7: café equilibrado, rico en sabores.</li>
+    
+         <li>8–10: café de cuerpo redondo con aromas generosos.</li>
+    </p>
+<button>Editar</button>
+
+</form>
+{% endblock afterheader  %}

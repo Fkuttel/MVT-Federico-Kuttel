@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+{% block title %}
+        <title>
+            Lista de Tes creados
+        </title>
+{% endblock title  %}
+
+{% block mi_h1 %}
+<h1 class="mb-5">Lista de Infusiones creadas</h1>
+{% endblock mi_h1 %}
+{% block afterheader %} 
+<p>
+    <a href={% url 'creacion' %}>Crear Infusion</a>
+
+    {% if object_list %}
+    <ul>
+        {% for te  in object_list  %}
+        <li>
+            {{te}}
+            <a href={% url 'editar' te.id %}>editar</a>
+            <a href={% url 'borrar' te.id %}>borrar</a>
+        </li>
+        {% endfor %}
+    </ul>
+</p>
+<p>
+    {% else %}
+    No hay Infusiones con ese nombre!    
+    {% endif %}
+ 
+</p>
+
+{% endblock afterheader  %}
+

@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+{% block title %}
+        <title>
+            Borrar
+        </title>
+{% endblock title  %}
+
+{% block mi_h1 %}
+<h1 class="mb-5">Borrar Infusiones creadas</h1>
+{% endblock mi_h1 %}
+{% block afterheader %} 
+<p>
+    <a href={% url 'creacion' %}>Borrar Infusion</a>
+
+<form action ={% url 'borrar'  object.id %} method=post>
+    {% csrf_token %}
+    ¿Desea eliminar la infusion?
+    <button>Confirmar</button>
+</form>
+</p>
+<p>
+   
+</p>
+
+{% endblock afterheader  %}

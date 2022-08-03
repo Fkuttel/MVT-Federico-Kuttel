@@ -1,5 +1,5 @@
 from unittest import result
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from .forms import BuscarCafe, FormCafe
 from .models import Cafe
@@ -38,14 +38,14 @@ def crear_cafe(request):
             cafe.save()
             listado_cafes = Cafe.objects.all()
             
-            return render(request,"listado_cafes.html", {"listado_cafes": listado_cafes})
+            return render(request,"Cafe/listado_cafes.html", {"listado_cafes": listado_cafes})
         else:
-            return render(request,"crearcafes.html", {"form":form})
+            return render(request,"Cafe/crearcafes.html", {"form":form})
             
             
     form_cafe = FormCafe()
  
-    return render(request,"crearcafes.html", {"form":form_cafe})
+    return render(request,"Cafe/crearcafes.html", {"form":form_cafe})
 
 def listado_cafes(request):
     resultado_busqueda = request.GET.get("nombre")
@@ -57,8 +57,35 @@ def listado_cafes(request):
     
     form =BuscarCafe()
             
-    return render(request,"listado_cafes.html", {"listado_cafes": listado_cafes, "form":form})
+    return render(request,"Cafe/listado_cafes.html", {"listado_cafes": listado_cafes, "form":form})
 
 def acerca_de(request):
     return render (request, "about_us.html")
+
+def editar_cafe(request,id):
+    cafe = Cafe.objects.get(id=id)
+
+    if request.method == "POST":
+        form = FormCafe(request.POST)
+        if form.is_valid():
+            cafe.nombre = form.cleaned_data.get("nombre")
+            cafe.tostado = form.cleaned_data.get("tostado")
+            cafe.cuerpo = form.cleaned_data.get("cuerpo")
+            cafe.save()
+            
+            return redirect ("listado_cafes")
+        else:
+            return render(request,"Cafe/editar_cafe.html", {"form":form,"cafe":cafe})
+ 
+
+    form_cafe = FormCafe(initial={"nombre":cafe.nombre,"tostado":cafe.tostado, "cuerpo":cafe.cuerpo})
+ 
+    return render(request,"Cafe/editar_cafe.html", {"form":form_cafe,"cafe":cafe})
+            
+            
+
+def borrar_cafe(request,id):
+    cafe = Cafe.objects.get(id=id)
+    cafe.delete()
     
+    return redirect ("listado_cafes")
