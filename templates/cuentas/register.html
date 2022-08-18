@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% block title %}
+        <title>
+            Registrate
+        </title>
+{% endblock title  %}
+
+{% block mi_h1 %}
+<h1 class="mb-5">Cuentas de usuario</h1>
+{% endblock mi_h1 %}
+{% block afterheader %} 
+<form action="{% url 'register' %}" method="post">{% csrf_token %}
+    <table>
+{{form.as_table}}
+    </table>
+    <p>
+
+    
+    </p>
+<button>Registrarse</button>
+
+</form>
+{% endblock afterheader  %}
