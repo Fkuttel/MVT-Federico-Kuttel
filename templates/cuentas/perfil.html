@@ -16,6 +16,13 @@ class="mb-5">Perfiles de usuario {{request.user.username}}
     <ul>
     <li>Nombre:{{request.user.first_name}}</li>
     <li>Apellido:{{request.user.last_name}}</li>
+    <li>
+        <p>Avatar:</p>
+        {% if request.user.masdatosusuario.avatar %}
+        <img src={{request.user.masdatosusuario.avatar.url}} alt="" height= "300px">
+        {% endif %}
+        
+    </li>
     </ul>
 </p>
     <p>

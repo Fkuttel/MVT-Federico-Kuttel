@@ -9,7 +9,8 @@
 <h1 class="mb-5">Editar perfil de usuario</h1>
 {% endblock mi_h1 %}
 {% block afterheader %} 
-<form action="{% url 'editar_perfil' %}" method="post">{% csrf_token %}
+<form action="{% url 'editar_perfil' %}" method="post" enctype= "multipart/form-data">
+    {% csrf_token %}
     <table>
 {{form.as_table}}
     </table>
