@@ -11,6 +11,7 @@
 {% block afterheader %} 
 <form action="{% url 'creacion' %}" method="post">{% csrf_token %}
     <table>
+{{form.media}}
 {{form.as_table}}
     </table>
     <p>

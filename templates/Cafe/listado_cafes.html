@@ -10,7 +10,7 @@
 {% endblock mi_h1 %}
 {% block afterheader %} 
 <p>
-    <a href={% url 'creacion' %}>Crear Cafe</a>
+    <a href={% url 'creacion_cafe' %}>Crear Cafe</a>
 </p>
 <form action={% url 'listado_cafes' %}>
     {{form}}
@@ -22,8 +22,9 @@
         {% for cafe  in listado_cafes  %}
         <li>
             {{cafe}}
-            <a href={% url 'editar' cafe.id %}>editar</a>
-            <a href={% url 'borrar' cafe.id %}>borrar</a>
+            <a href={% url 'editar_cafe' cafe.id %}>editar</a>
+            <a href={% url 'borrar_cafe' cafe.id %}>borrar</a>
+            <a href={% url 'mostrar_cafe' cafe.id %}>mostrar</a>
         </li>
         {% endfor %}
     </ul>

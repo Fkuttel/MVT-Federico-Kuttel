@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+{% block title %}
+        <title>
+        Cafes creados
+        </title>
+{% endblock title  %}
+
+{% block mi_h1 %}
+<h1 class="mb-5">Cafes creados</h1>
+{% endblock mi_h1 %}
+{% block afterheader %} 
+<p>
+    <a href={% url 'listado_cafes' %}>Volver</a>
+</p>
+
+<p>
+    <ul>
+        <li>
+            {{cafe.nombre}}
+        </li>
+        
+        <li>
+            {{cafe.tostado}}
+        </li>
+        
+        <li>
+            {{cafe.descripcion | safe}}
+        </li>
+        
+        <li>
+            {{cafe.cuerpo}}
+        </li>
+    </ul>
+ 
+</p>
+
+{% endblock afterheader  %}

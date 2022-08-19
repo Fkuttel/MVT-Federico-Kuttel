@@ -9,8 +9,9 @@
 <h1 class="mb-5">Laboratorio de Cafe</h1>
 {% endblock mi_h1 %}
 {% block afterheader %} 
-<form action="{% url 'editar' cafe.id %}" method="post">{% csrf_token %}
+<form action="{% url 'editar_cafe' cafe.id %}" method="post">{% csrf_token %}
     <table>
+{{form.media}}
 {{form.as_table}}
     </table>
     <p>

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'miprimerapp',
     'Te',
     'cuentas',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [

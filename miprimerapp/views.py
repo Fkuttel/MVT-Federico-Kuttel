@@ -33,7 +33,8 @@ def crear_cafe(request):
             cafe = Cafe(
                 nombre=data.get("nombre"),
                 tostado=data.get("tostado"),
-                cuerpo=data.get("cuerpo")
+                cuerpo=data.get("cuerpo"),
+                descripcion=data.get("descripcion"),
                 )
             cafe.save()
             listado_cafes = Cafe.objects.all()
@@ -71,6 +72,7 @@ def editar_cafe(request,id):
             cafe.nombre = form.cleaned_data.get("nombre")
             cafe.tostado = form.cleaned_data.get("tostado")
             cafe.cuerpo = form.cleaned_data.get("cuerpo")
+            cafe.descripcion = form.cleaned_data.get("descripcion")
             cafe.save()
             
             return redirect ("listado_cafes")
@@ -78,7 +80,10 @@ def editar_cafe(request,id):
             return render(request,"Cafe/editar_cafe.html", {"form":form,"cafe":cafe})
  
 
-    form_cafe = FormCafe(initial={"nombre":cafe.nombre,"tostado":cafe.tostado, "cuerpo":cafe.cuerpo})
+    form_cafe = FormCafe(initial={"nombre":cafe.nombre,
+                                  "tostado":cafe.tostado,
+                                  "descripcion":cafe.descripcion,
+                                  "cuerpo":cafe.cuerpo})
  
     return render(request,"Cafe/editar_cafe.html", {"form":form_cafe,"cafe":cafe})
             
@@ -89,3 +94,7 @@ def borrar_cafe(request,id):
     cafe.delete()
     
     return redirect ("listado_cafes")
+
+def mostrar_cafe(request,id):
+    cafe = Cafe.objects.get(id=id)
+    return render (request, "Cafe/mostrar_cafe.html", {"cafe": cafe})
