@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% block title %}
+        <title>
+            Perfil
+        </title>
+{% endblock title  %}
+
+{% block mi_h1 %}
+<h1 
+class="mb-5">Perfiles de usuario {{request.user.username}}
+
+</h1>
+{% endblock mi_h1 %}
+{% block afterheader %} 
+<p>
+    <ul>
+    <li>Nombre:{{request.user.first_name}}</li>
+    <li>Apellido:{{request.user.last_name}}</li>
+    </ul>
+</p>
+    <p>
+<a href={% url 'editar_perfil' %}> Editar mis datos</a>    
+    </p>
+
+
+
+{% endblock afterheader  %}

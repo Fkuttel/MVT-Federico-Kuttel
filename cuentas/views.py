@@ -1,6 +1,9 @@
-from django.shortcuts import render
-from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
+from django.shortcuts import redirect, render
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login as django_login
+from django.contrib.auth.decorators import login_required
+from .forms import MyUserCreationForm, MyUserEditForm
+
 
 # Create your views here.
 def login(request):
@@ -31,12 +34,49 @@ def login(request):
 def register(request):
        
         if request.method == "POST":
-            form = UserCreationForm(request.POST)
+            form = MyUserCreationForm(request.POST)
             if form.is_valid():
                 form.save()
                 return render(request, "index.html",{})
             else:
                 return render(request, "cuentas/register.html",{"form":form})
 
-        form = UserCreationForm()
+        form = MyUserCreationForm()
         return render(request, "cuentas/register.html",{"form":form})
+@login_required
+def perfil(request):
+     return render(request, "cuentas/perfil.html")
+ 
+@login_required
+def editar_perfil(request):
+    user = request.user
+    
+    if request.method == "POST": 
+        form = MyUserEditForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            if data.get ("first_name"):
+                user.first_name = data.get("first_name")
+            if data.get ("last_name"):
+                user.last_name = data.get("last_name")
+            if data.get ("password1") and data.get ("password1") == data.get ("password2"):
+                user.set_password(data.get ("password1"))
+            user.save()
+            
+            return render(request, "cuentas/perfil.html",{})
+        
+        else:
+            return render (request, "cuentas/editar_perfil.html", {"form":form})
+    
+    form = MyUserEditForm(
+        initial={
+            "first_name":user.first_name,
+            "last_name":user.last_name
+            
+            
+        }
+        
+    )
+   
+    return render (request, "cuentas/editar_perfil.html",{"form":form})
+
