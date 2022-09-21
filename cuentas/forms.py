@@ -7,13 +7,13 @@ from pkg_resources import require
 
 class MyUserCreationForm(UserCreationForm):
     
-    usuario = forms.CharField(label="Usuario", max_length=30)
+    username = forms.CharField(label="Username", max_length=30)
     password1 = forms.CharField(label="Password", widget=forms.PasswordInput)
     password2 = forms.CharField(label="Repetir Password",widget=forms.PasswordInput)
     
     class Meta:
         model = User
-        fields = ["usuario","password1", "password2"]
+        fields = ["username","password1", "password2"]
         help_text = { key:"" for key in fields}
 
 

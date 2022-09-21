@@ -24,7 +24,6 @@
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
                 <a class="navbar-brand" href={% url 'index' %}>Inicio</a>
-                <a class="navbar-brand" href={% url "cafeinomanos_only" %}>Mi Lista de Cafe</a> 
                 <a class="navbar-brand" href={% url "listado_cafes" %}>Cafes</a> 
                 <a class="navbar-brand" href={% url "listado_te" %}>Infusiones</a> 
                 {% if request.user.is_authenticated %}
